@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ <!-- Define the root element -->
+  <xs:element name="DirList"> 
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Directory">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Indicated the directory element configurations is active or not-->
+              <xs:element name="active" type="xs:boolean" /> 
+              <!-- Specifies the name of activity: This element is populated in generated doclist Hist Sheet cell A1 -->
+              <xs:element name="activityName" type="xs:string" />
+              <!-- Specifies the acronymn of activity: This element is populated in generated doclist Hist Sheet cell A2 -->
+               <xs:element name="activityAcronymn" type="xs:string" />
+              <!-- This element specifies the ISMS Working directory root path (directory containing all files working or finalized)  -->
+              <xs:element name="ISMSWorkDir" type="xs:string" />
+              <!-- This element specifies the ISMS Publish directory root path (directory containing all published file with classification internal or restricted)  -->
+              <xs:element name="ISMSPublishDir" type="xs:string" />
+              <!-- This element specifies the path where the generate doclist will be saved by the tool -->
+              <xs:element name="docListSavePath" type="xs:string" />
+              <!-- This element specifies the Name specified to the doclist (exclusing the version number) -->
+              <xs:element name="docListName" type="xs:string" />
+              <!-- This element specifies whether doclist if present in the path should be overwritten or not -->
+              <xs:element name="docListOverwrite" type="xs:boolean" />
+              <!-- This element specifies the name of DocList sheet in the Template DocList (specified using "docListTemplate" argument of the tool) -->
+              <xs:element name="templateDoclistSheet" type="xs:string" />
+              <!-- This element specifies the name of Misc sheet in the Template DocList (specified using "docListTemplate" argument of the tool) -->
+              <xs:element name="templateMiscSheet" type="xs:string" />
+              <!-- This element specifies the name of Parameter sheet in the Template DocList (specified using "docListTemplate" argument of the tool) -->
+              <xs:element name="templateMappingSheet" type="xs:string" />
+              <!-- This element specifies the name of Existing doclist which may be used to create an updated doclist: This option is in Beta version -->
+              <xs:element name="useExistingDocListEntries" type="xs:string" />
+              <!-- This element specifies the name of DocList sheet in Existing doclist (if useExistingDocListEntries used): This option is in Beta version -->
+              <xs:element name="existingDocListSheet" type="xs:string" />
+              <!-- These directories provide a list of files or folders that the tool will ignore while processing the ISMS files -->
+              <xs:element name="excludeList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="excludeName" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

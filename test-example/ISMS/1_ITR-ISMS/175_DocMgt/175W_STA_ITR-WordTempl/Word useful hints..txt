@@ -1,0 +1,11 @@
+https://bettersolutions.com/word/fields/toc-field.htm
+
+
+{TOC \c "AC" \x \w \h Hyperlink \t "Action_Cor"}
+\h to add hyperlinks
+\c to add "AC X" I think, not sure
+
+Add \n to omit page numbers.
+\w 	Preserves tab entries within table entries
+\x 	Preserves newline characters within table entries
+Change  style in Table of AC (do not synch, otherwise formating is destroyed. 

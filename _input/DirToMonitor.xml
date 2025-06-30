@@ -1,0 +1,45 @@
+<?xml version ="1.0" encoding = "utf-8"?>
+
+<!-- Define the root element -->
+<DirList>
+		<!-- Define the directory element configurations -->
+		<Directory>
+			<!-- Indicated the directory element configurations is active or not-->
+			<active>true</active>
+			<!-- Specifies the name of activity: This element is populated in generated doclist Hist Sheet cell A1 -->
+			<activityName>Information Security Management System</activityName>
+			<!-- Specifies the acronym of activity: This element is populated in generated doclist Hist Sheet cell A2 -->
+			<activityAcronymn>ISMS</activityAcronymn>
+			<!-- This element specifies the ISMS Working directory root path (directory containing all files working or finalized)  -->
+			<ISMSWorkDir>N:\MG\ISMS</ISMSWorkDir>
+			<!-- This element specifies the ISMS Publish directory root path (directory containing all published file with classification internal or restricted)  -->
+			<ISMSPublishDir>N:\_INternal\ISMS</ISMSPublishDir>
+			<!-- This element specifies the path where the generate doclist will be saved by the tool -->
+			<docListSavePath>N:\MG\ISMS\0_ITR-InfoSec\0D_PLA_ITR-DocList\_input</docListSavePath>
+			<!-- This element specifies the Name specified to the doclist (exclusing the version number) -->
+			<docListName>0D_PLA_ITR-DocList</docListName>
+			<!-- This element specifies whether doclist if present in the path should be overwritten or not -->
+			<docListOverwrite>false</docListOverwrite>
+			<!-- This element specifies the name of DocList sheet in the Template DocList (specified using "docListTemplate" argument of the tool) -->
+			<templateDoclistSheet>DocList</templateDoclistSheet>
+			<!-- This element specifies the name of Misc sheet in the Template DocList (specified using "docListTemplate" argument of the tool) -->
+			<templateMiscSheet>Misc</templateMiscSheet>
+			<!-- This element specifies the name of Parameter sheet in the Template DocList (specified using "docListTemplate" argument of the tool) -->
+			<templateMappingSheet>Parameters</templateMappingSheet>
+			<!-- This element specifies the name of Existing doclist which may be used to create an updated doclist: This option is in Beta version -->
+			<useExistingDocListEntries>N:\MG\ISMS\0_ITR-InfoSec\0D_PLA_ITR-DocList\_distributed\0D_PLA_ITR-DocList_v1.7.xlsm</useExistingDocListEntries>
+			<!-- This element specifies the name of DocList sheet in Existing doclist (if useExistingDocListEntries used): This option is in Beta version -->
+			<existingDocListSheet>ISMS-DocList</existingDocListSheet>
+			<!-- This element provides a list of files or folders that the tool will ignore while processing the ISMS files -->
+			<excludeList>
+				 <excludeName>_*</excludeName> 
+				<excludeName>hist</excludeName>
+				<excludeName>old</excludeName>
+				<excludeName>picures</excludeName>
+				<excludeName>CC</excludeName>
+				<excludeName>Presentations</excludeName>
+				<excludeName>REC</excludeName>
+			</excludeList>
+		</Directory>
+	
+</DirList>

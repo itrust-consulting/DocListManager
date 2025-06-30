@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DocListHandler": {
+      "commandName": "Project",
+      "commandLineArgs": "--xmlConfigFile N:\\CyFORT-RW\\5_CS-GRAM\\5D_DocListTool\\5DC_Implementation\\test-example\\_inputdoclist\\DirToMonitorWithUseExistingDocList.xml  --docListTemplate N:\\CyFORT-RW\\5_CS-GRAM\\5D_DocListTool\\5DC_Implementation\\test-example\\_inputdoclist\\DocListTemplate.xlsm  --logdir \"N:\\CyFORT-RW\\5_CS-GRAM\\5D_DocListTool\\5DC_Implementation\\test-example\""
+    }
+  }
+}

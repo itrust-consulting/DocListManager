@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DocListManagerSetup", "DocListManagerSetup\DocListManagerSetup.vdproj", "{28B74F77-E399-490E-9A41-1976A5A5B43A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocListManager", "DocListManager\DocListManager.csproj", "{810AD4F0-FFCC-4814-9A13-824524E1385A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28B74F77-E399-490E-9A41-1976A5A5B43A}.Debug|Any CPU.ActiveCfg = Debug
+		{28B74F77-E399-490E-9A41-1976A5A5B43A}.Debug|Any CPU.Build.0 = Debug
+		{28B74F77-E399-490E-9A41-1976A5A5B43A}.Release|Any CPU.ActiveCfg = Release
+		{28B74F77-E399-490E-9A41-1976A5A5B43A}.Release|Any CPU.Build.0 = Release
+		{810AD4F0-FFCC-4814-9A13-824524E1385A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{810AD4F0-FFCC-4814-9A13-824524E1385A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{810AD4F0-FFCC-4814-9A13-824524E1385A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{810AD4F0-FFCC-4814-9A13-824524E1385A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E6CC361-765E-4EEE-911E-7119B8A3DD75}
+	EndGlobalSection
+EndGlobal
