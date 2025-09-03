@@ -625,7 +625,7 @@ namespace DocListManager
                 List<string> extensions = new List<string> {".pdf", ".docx", ".xlsx", ".xlsm"};
 
                 // Explicity crawl _dist* , _approv* directories only
-                using (IEnumerator<string> filepaths = DirCrawler.StartCrawlerDistributedDirs(directory, extensions).GetEnumerator())
+                using (IEnumerator<string> filepaths = DirCrawler.StartCrawlerDistributedDirs(directory, extensions, excludeDirList).GetEnumerator())
                 {
                     while (filepaths.MoveNext())
                     {

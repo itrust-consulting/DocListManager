@@ -21,7 +21,7 @@ namespace DocListManager
             return filteredPaths;
         }
 
-        public static IEnumerable<string> StartCrawlerDistributedDirs(string directory, List<string> extensions)
+        public static IEnumerable<string> StartCrawlerDistributedDirs(string directory, List<string> extensions, List<string>  excludePatterns)
         {
             // Define the directory name patterns to match (e.g., _dist*, _appr*)
             List<string> directoryPatterns = new List<string> { "_dist", "_appr" };
@@ -41,42 +41,57 @@ namespace DocListManager
                     continue; // Skip this directory and move on to the next one
                 }
 
+                if (isExcluded(excludePatterns, dir) &&
+                !directoryPatterns.Any(dp => dirName.StartsWith(dp, StringComparison.OrdinalIgnoreCase)))
+                {
+                    continue; // Excluded and not in allow-list — skip
+                }
+
+                Dictionary<DocIdentGlobals.DocIdentFields, string> parentDirIdentifiers = CheckNC.GetIdentifiers(directory, true, false);
+
                 // Check if the directory name matches the patterns
                 bool matchesPattern = directoryPatterns.Any(pattern => dirName.StartsWith(pattern, StringComparison.OrdinalIgnoreCase));
 
                 if (matchesPattern)
                 {
+                    string dirId = CheckNC.GetDirId(directory);
                     hasMatchingDirectories = true;
 
                     // Retrieve files with the specific extensions in the matching directory (top-level only)
+                    // Also retrieving only files which match the base ID of the parent directory so that old I
                     var filesInDir = Directory.GetFiles(dir, "*.*", SearchOption.TopDirectoryOnly)
-                                              .Where(file => extensions.Contains(Path.GetExtension(file).ToLower()))
-                                              .ToList();
+                        .Where(file =>
+                            extensions.Contains(Path.GetExtension(file).ToLower()) &&
+                            Path.GetFileNameWithoutExtension(file).StartsWith(dirId, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
 
                     if (filesInDir.Count > 0)
                     {
-                        // Get the base name of the most recent file
-                        var mostRecentFile = filesInDir.OrderByDescending(file => new FileInfo(file).LastWriteTime).First();
-                        string baseFileName = Path.GetFileNameWithoutExtension(mostRecentFile);
 
-                        // Retrieve all files with the same base name but different extensions
-                        var matchingFiles = Directory.GetFiles(dir, $"{baseFileName}.*", SearchOption.TopDirectoryOnly)
-                                                     .Where(file => !file.Equals(mostRecentFile, StringComparison.OrdinalIgnoreCase))
-                                                     .ToList();
+                        // Group files by base name (e.g., "report1")
+                        var groupedFiles = filesInDir
+                            .GroupBy(file => Path.GetFileNameWithoutExtension(file), StringComparer.OrdinalIgnoreCase);
 
-                        // Include the most recent file in the result
-                        matchingFiles.Add(mostRecentFile);
-
-                        foreach (var file in matchingFiles)
+                        foreach (var group in groupedFiles)
                         {
-                            yield return file;
+                            // For each group, get most recent file
+                            var mostRecent = group.OrderByDescending(file => File.GetLastWriteTime(file)).First();
+                            var baseFileName = Path.GetFileNameWithoutExtension(mostRecent);
+
+                            // Get all files with the same base name, any extension
+                            var relatedFiles = Directory.GetFiles(dir, $"{baseFileName}.*", SearchOption.TopDirectoryOnly)                                                        .ToList();
+
+                            foreach (var file in relatedFiles)
+                            {
+                                yield return file;
+                            }
                         }
                     }
                 }
                 else
                 {
                     // Recurse into non-matching directories
-                    foreach (var file in StartCrawlerDistributedDirs(dir, extensions))
+                    foreach (var file in StartCrawlerDistributedDirs(dir, extensions, excludePatterns))
                     {
                         yield return file;
                     }

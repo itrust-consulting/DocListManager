@@ -881,6 +881,23 @@ namespace DocListManager
         }
 
 
+        // Gets the ID of the directory path
+        public static string GetDirId(string dirPath)
+        {
+            string identifier = "";
+            // Extract the folder name from the full directory path
+            string dirName = System.IO.Path.GetFileName(dirPath);
+            string[] parts = dirName.Split("_");
+
+            if (parts.Length > 0)
+            {
+                identifier = parts[0];                  
+            }
+
+            return identifier;
+        }
+
+
         private static string ExtractVersion(string input)
         {
             Match versionMatch = Regex.Match(input, @"v\d+(\.\d+)+");
